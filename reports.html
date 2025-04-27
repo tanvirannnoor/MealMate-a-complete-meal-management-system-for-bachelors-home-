@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - MealMate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
+      <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start">
+            <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar" class="lg:hidden mr-2 text-gray-600 hover:text-gray-900 cursor-pointer p-2 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <a href="dashboard.html" class="text-xl font-bold flex items-center lg:ml-2.5">
+              <span class="text-emerald-600">Meal</span><span class="text-gray-900">Mate</span>
+            </a>
+          </div>
+          <div class="flex items-center">
+            <div class="hidden lg:flex items-center">
+              <span id="houseName" class="text-base font-normal text-gray-500 mr-5"></span>
+            </div>
+            <div class="flex items-center">
+              <div class="relative">
+                <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold" id="userInitial"></div>
+                </button>
+                <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow" id="dropdown">
+                  <div class="py-3 px-4">
+                    <span class="block text-sm font-semibold text-gray-900" id="userName"></span>
+                    <span class="block text-sm text-gray-900 truncate" id="userEmail"></span>
+                    <span class="block text-sm font-semibold text-emerald-500 mt-1" id="userRole"></span>
+                  </div>
+                  <ul class="py-1 text-gray-700" aria-labelledby="dropdown">
+                    <li>
+                      <a href="#" id="logoutBtn" class="block py-2 px-4 text-sm hover:bg-gray-100">Sign out</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed hidden z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
+      <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
+        <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+          <div class="flex-1 px-3 bg-white divide-y space-y-1">
+            <ul class="space-y-2 pb-2">
+              <li>
+                <a href="dashboard.html" class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
+                  <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                  </svg>
+                  <span class="ml-3">Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="house_mates.html" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                  <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+                  </svg>
+                  <span class="ml-3">House Mates</span>
+                </a>
+              </li>
+              <li>
+                <a href="meal_system.html" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                  <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                  </svg>
+                  <span class="ml-3">Meal System</span>
+                </a>
+              </li>
+              <li>
+                <a href="meal_entry.html" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                  <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="ml-3">Meal Entry</span>
+                </a>
+              </li>
+              <li>
+                <a href="expense_entry.html" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                  <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="ml-3">Expense Entry</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group bg-gray-100">
+                  <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                  </svg>
+                  <span class="ml-3">Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main content -->
+    <div class="bg-gray-50 lg:ml-64 pt-16 min-h-screen">
+      <main class="h-full p-4 md:p-8">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 mb-6">
+          <div class="mb-4 flex items-center justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Reports</h3>
+              <span class="text-base font-normal text-gray-500">View meal and expense reports</span>
+            </div>
+            <div>
+              <button id="printReportBtn" class="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:ring-emerald-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                </svg>
+                Print Report
+              </button>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div class="sm:hidden">
+              <label for="reportType" class="sr-only">Select report type</label>
+              <select id="reportType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
+                <option value="daily">Daily Report</option>
+                <option value="weekly">Weekly Report</option>
+                <option value="monthly">Monthly Report</option>
+              </select>
+            </div>
+            <div class="hidden sm:block">
+              <div class="border-b border-gray-200">
+                <nav class="-mb-px flex" aria-label="Tabs">
+                  <button class="report-tab w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm" data-type="daily">
+                    Daily Report
+                  </button>
+                  <button class="report-tab w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm" data-type="weekly">
+                    Weekly Report
+                  </button>
+                  <button class="report-tab w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm" data-type="monthly">
+                    Monthly Report
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <div id="dateRangeSelector" class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="w-full sm:w-auto">
+                <label for="reportDate" class="block text-sm font-medium text-gray-700 mb-1">Select Date</label>
+                <input type="date" id="reportDate" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
+              </div>
+              
+              <div id="weekSelector" class="w-full sm:w-auto hidden">
+                <label for="reportWeek" class="block text-sm font-medium text-gray-700 mb-1">Select Week</label>
+                <input type="week" id="reportWeek" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
+              </div>
+              
+              <div id="monthSelector" class="w-full sm:w-auto hidden">
+                <label for="reportMonth" class="block text-sm font-medium text-gray-700 mb-1">Select Month</label>
+                <input type="month" id="reportMonth" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
+              </div>
+              
+              <div class="w-full sm:w-auto sm:self-end">
+                <button id="generateReportBtn" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                  Generate Report
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div id="reportContent" class="hidden">
+            <div class="mb-6">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <h4 class="text-lg font-medium text-gray-900 mb-4">Summary</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <div class="text-sm text-gray-500 mb-1">Total Meals</div>
+                    <div class="text-xl font-bold text-emerald-600" id="summaryTotalMeals">0</div>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <div class="text-sm text-gray-500 mb-1">Total Expenses</div>
+                    <div class="text-xl font-bold text-blue-600" id="summaryTotalExpenses">$0</div>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <div class="text-sm text-gray-500 mb-1">Meal Rate</div>
+                    <div class="text-xl font-bold text-purple-600" id="summaryMealRate">$0</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <h4 class="text-lg font-medium text-gray-900 mb-4">Member Details</h4>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-white">
+                      <tr>
+                        <th scope="col" class="px-4 py-3">Name</th>
+                        <th scope="col" class="px-4 py-3">Total Meals</th>
+                        <th scope="col" class="px-4 py-3">Expenses Paid</th>
+                        <th scope="col" class="px-4 py-3">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody id="memberDetailsList">
+                      <!-- Member details will be loaded here dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <h4 class="text-lg font-medium text-gray-900 mb-4">Expense Details</h4>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-white">
+                      <tr>
+                        <th scope="col" class="px-4 py-3">Date</th>
+                        <th scope="col" class="px-4 py-3">Amount</th>
+                        <th scope="col" class="px-4 py-3">Paid By</th>
+                        <th scope="col" class="px-4 py-3">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody id="expenseDetailsList">
+                      <!-- Expense details will be loaded here dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="noDataMessage" class="py-8 text-center">
+            <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <h4 class="text-lg font-medium text-gray-900 mb-2">No Data Available</h4>
+            <p class="text-gray-500">Select a date range and generate a report to view data</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/reports.js"></script>
+</body>
+</html>

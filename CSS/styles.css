@@ -1,0 +1,52 @@
+/* Custom styles for MealMate */
+
+/* Utility classes */
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Active tab styling */
+  .report-tab.active {
+    border-color: #059669;
+    color: #059669;
+  }
+  
+  .report-tab {
+    border-color: transparent;
+    color: #6b7280;
+  }
+  
+  /* Print styles */
+  @media print {
+    nav,
+    aside,
+    button,
+    .no-print {
+      display: none !important;
+    }
+  
+    body,
+    .bg-gray-50 {
+      background-color: white !important;
+    }
+  
+    main {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  
+    .bg-white {
+      box-shadow: none !important;
+    }
+  
+    .lg\:ml-64 {
+      margin-left: 0 !important;
+    }
+  
+    .pt-16 {
+      padding-top: 0 !important;
+    }
+  }
+  
